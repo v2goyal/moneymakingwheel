@@ -1,0 +1,106 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="images/favicon.ico" rel="shortcut icon">
+        <title>Money Making Wheel</title>
+        <script type="text/javascript" src="//go.pub2srv.com/apu.php?zoneid=462693"></script>
+    </head>
+    <body>
+            <div class="jumbotron" style="BACKGROUND-COLOR: BLACK; text-align: center">
+            {% load static %}
+            <img src="{% get_static_prefix %}images/LogoFinal.png" style="max-height: 380px;">
+        </div>
+        <div style="text-align: center;margin-top: -95px;">
+            <span class="label label-primary" style="font-size: 25px; background-color: rgba(0, 46, 93, 1); margin-top: -100px;font-family:times new roman,times,serif;font-weight: normal;">Genuine Portal to Make Money Online!</span>
+        </div>
+        <br>
+                <div style="position: absolute;top: 80px; left:20px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740157" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code -->
+        </div>
+        <div style="position: absolute;top: 730px; left:20px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740161" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 80px; left:1260px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740165" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 730px; left:1260px;">
+               <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740166" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div class="container" id="loginModal" style="
+    width: 1098px;
+">
+            <div class="modal-body" style="max-height: inherit;">
+                <div class="well">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+                        <li><a href="#create" data-toggle="tab">Create Account</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="login">
+                        <form class="form-horizontal" action='' method="POST">
+                        {% csrf_token %}
+  <br>
+                               <label style="color:black;">Username</label>
+                                <input type="text" id="username" name="username" value="" class="form-control" required>
+                                <label style="color:black;">Password</label>
+                                <input type="password" id="password" name="password" placeholder="" class="form-control" required>
+                                <br>
+  <button class="btn btn-primary" type="submit" class="btn btn-default">Submit</button>
+</form>
+                        </div>
+                        <div class="tab-pane fade" id="create">
+                            <form class="form-horizontal" id="tab" action='' method="POST">
+                                {% csrf_token %}
+                                <br>
+                                <label style="color:black;">Username</label>
+                                <input type="text" id="username" name="username" value="" class="form-control" required>
+                                <label style="color:black;">Password</label>
+                                <input type="password" id="password" name="password" placeholder="" class="form-control" required>
+                                <label style="color:black;">First Name</label>
+                                <input type="text" id="firstName" name="firstName" value="" class="form-control" required>
+                                <label style="color:black;">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" value="" class="form-control" required>
+                                <label style="color:black;">Referral ID (10 Free Spins) ***Fake referrals not allowed, payment won't be approved.</label>
+                                <input type="text" id="referral" name="referral" value="" class="form-control">
+                                <label style="color:black;">Email</label>
+                                <input type="text" id="email" name="email" value="" class="form-control" required>
+                                <br>
+                                <div>
+                                    <button class="btn btn-primary">Create Account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script class="cssdeck" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <div style="text-align:center;background-color: white;">
+        <ul class="nav nav-pills" style="display:inline-block;margin-bottom: -8px;margin-top: -8px;">
+          <li classrole="presentation"><a id="active_ul" href="/">Home</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/faqs">FAQs</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/login">Spin the Wheel</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/advertiser">Advertiser</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+    <div style="
+    text-align: center;
+">
+        © 2015 by MoneyMakingWheel.com | All Rights Reserved 
+    </div>
+    </body>
+</html>

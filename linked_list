@@ -1,0 +1,13 @@
+struct node
+{
+	int a;
+	node *next;
+	
+} node;
+
+int main(int argc, char const *argv[])
+{
+	node *head = new node;
+	head->a = 3;
+	return 0;
+}

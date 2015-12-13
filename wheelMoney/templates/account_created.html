@@ -1,0 +1,33 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="images/favicon.ico" rel="shortcut icon">
+        <title>Money Making Wheel</title>
+    </head>
+    <body>
+    <div class="container">
+    <div class="alert alert-success" role="alert">Account successfully created. Loading your account .....</div>
+    <div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr-only">40% Complete (success)</span>
+  </div>
+</div>
+</div>
+        <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script class="cssdeck" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    for (i = 0; i < 101; i++) { 
+        a = $('.progress-bar')[0];
+        a.style.width = "" + i + "%";
+
+        if(i == 100){
+            window.location="/login";
+        }
+    }
+</script>
+    </body>
+</html>

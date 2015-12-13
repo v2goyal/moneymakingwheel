@@ -1,0 +1,284 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="images/favicon.ico" rel="shortcut icon">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <title>Money Making Wheel</title>
+        <style type="text/css">
+                        text{
+                        font-family:Helvetica, Arial, sans-serif;
+                        font-size:11px;
+                        pointer-events:none;
+                        }
+                        #chart{
+                        width:740px;
+                        margin-left: 130px;
+                        /*text-align: left;*/
+                        /*height:500px;*/
+                        }
+                        #question{
+                        margin-top: 280px;
+                        margin-left: 65px;
+                        width: 400px;
+                        }
+                        #question h1{
+                        font-size: 50px;
+                        color: white;
+                        font-weight: bold;
+                        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        -webkit-transform:translate(0,-50%);
+                        transform:translate(0,-50%);
+                        }
+
+                        #inactive_ul{
+                            color: #606769;
+                            width: 200px;
+                        }
+
+                        #active_ul{
+                            color: #001A33;
+                            width: 200px;
+                        }
+
+
+                        #copyright{
+                            color: white;
+                            height: 100px;
+                            background-color: black;
+                            text-align: center;
+                            margin-bottom: 0px;
+                        }
+        </style>
+                {% autoescape off %}
+    {{ads}}
+ {% endautoescape %}
+    </head>
+    <body style="background-color:black;">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Spin the Wheel<span class="sr-only">(current)</span></a></li>
+                        <li><a href="withdraw">Withdraw</a></li>
+                    </ul>
+                    &nbsp;
+                    &nbsp;
+                    <ul class="nav navbar-nav" style="margin-left: 330px;">
+                        <li><a id="bal" href="#" style="color: black;">Winnings : {{ Balance }}</a></li>
+                        <li><a id="spinsLeft" href="#" style="color: black;">Spins Left : {{ spinsLeft }}</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                    </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+        <div style="position: absolute;top: 730px; left:20px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740161" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 80px; left:1260px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740165" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 730px; left:1260px;">
+               <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740166" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+                <div class="container">
+                    <h1 style="color:white;">Hi, {{username}}</h1>
+                           <div class="row">
+                <div class="col-xs-6">
+                    <div id="chart"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div id="question"><h1 style="color:white;"></h1></div>
+                </div>
+            </div>
+            <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+            <script type="text/javascript" charset="utf-8">
+                                    var padding = {top:20, right:40, bottom:0, left:0},
+                                    w = 500 - padding.left - padding.right,
+                                    h = 500 - padding.top  - padding.bottom,
+                                    r = Math.min(w, h)/2,
+                                    rotation = 0,
+                                    oldrotation = 0,
+                                    picked = 100000,
+                                    oldpick = [],
+                                    color = d3.scale.category20();//category20c()
+                                    //randomNumbers = getRandomNumbers();
+                                    //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
+                                    var data = [
+                                    {"label":"$0.01",  "value":0.01,  "question":"You have won $0.01."}, // padding
+                                    {"label":"$0.10",  "value":0.10,  "question":"You have won $0.10."}, //font-family
+                                    {"label":"Try Again",  "value":0,  "question":"Not a winner. Better luck next time."}, //color
+                                    {"label":"Try Again",  "value":0,  "question":"Not a winner. Better luck next time."}, //font-weight
+                                    {"label":"$50.0",  "value":50.0,  "question":"Congrats, you have won $1.00."}, //font-size
+                                    {"label":"Try Again",  "value":0,  "question":"Not a winner. Better luck next time."}, //background-color
+                                    {"label":"Try Again",  "value":0,  "question":"Not a winner. Better luck next time."}, //nesting
+                                    {"label":"$0.05",  "value":0.05,  "question":"You have won $0.05."}, //bottom
+                                    {"label":"$0.20",  "value":0.20,  "question":"Congrats, you have won $0.20."}, //sans-serif
+                                    {"label":"Try Again", "value":0, "question":"Not a winner. Better luck next time."}, //period
+                                    {"label":"Try Again", "value":0, "question":"Not a winner. Better luck next time."}, //pound sign
+                                    {"label":"2 Free Spins", "value":20, "question":"You have won 2 free spins."},
+                                                ];
+                                                var svg = d3.select('#chart')
+                                                .append("svg")
+                                                .data([data])
+                                                .attr("width",  w + padding.left + padding.right)
+                                                .attr("height", h + padding.top + padding.bottom);
+                                                var container = svg.append("g")
+                                                .attr("class", "chartholder")
+                                                .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")");
+                                                var vis = container
+                                                .append("g");
+                                                var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
+                                                // declare an arc generator function
+                                                var arc = d3.svg.arc().outerRadius(r);
+                                                // select paths, use arc generator to draw
+                                                var arcs = vis.selectAll("g.slice")
+                                                .data(pie)
+                                                .enter()
+                                                .append("g")
+                                                .attr("class", "slice");
+                                                arcs.append("path")
+                                                .attr("fill", function(d, i){ return color(i); })
+                                                .attr("d", function (d) { return arc(d); });
+                                                // add the text
+                                                arcs.append("text").attr("transform", function(d){
+                                                d.innerRadius = 0;
+                                                d.outerRadius = r;
+                                                d.angle = (d.startAngle + d.endAngle)/2;
+                                                return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius -10) +")";
+                                                })
+                                                .attr("text-anchor", "end")
+                                                .text( function(d, i) {
+                                                return data[i].label;
+                                                });
+                                                container.on("click", spin);
+                                                function spin(d){
+                                                            var  ps       = 360/data.length,
+                                                pieslice = Math.round(1440/data.length),
+                                                            rng      = Math.floor((Math.random() * 1440) + 360);
+                                                rotation = {{ang}} - 72;
+                                                picked = Math.round(data.length - (rotation % 360)/ps);
+                                                picked = picked >= data.length ? (picked % data.length) : picked;
+                                                if(oldpick.indexOf(picked) !== -1){
+                                                d3.select(this).call(spin);
+                                                return;
+                                                } else {
+                                                oldpick.push(picked);
+                                                }
+                                                rotation += 90 - Math.round(ps/2);
+                                                vis.transition()
+                                                .duration(3000)
+                                                .attrTween("transform", rotTween)
+                                                .each("end", function(){
+                                                //populate question
+                                                spinsLeft = {{ spinsLeft }};
+
+                                                if(spinsLeft > 0){
+                                                    d3.select("#question h1")
+                                                    .text(data[picked].question);
+                                                    chosenVal = data[picked].value;
+                                                    addBal = {{ Balance }} + (chosenVal % 2);
+                                                    addSpin = {{ spinsLeft }} - 1 + Math.floor((chosenVal / 10));
+                                                    $('#bal').text('Winnings : ' + addBal);
+                                                    $('#spinsLeft').text('Spins Left : ' + addSpin);
+                                                }else{
+                                                d3.select("#question h1")
+                                                    .text("No Spins Left. Please wait 24 hours.");
+                                                }
+
+                                                oldrotation = rotation;
+                                                });
+                                                }
+                                                //make arrow
+                                                svg.append("g")
+                                                .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+                                                .append("path")
+                                                .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
+                                                .style({"fill":"white"});
+                                                //draw spin circle
+                                                container.append("circle")
+                                                .attr("cx", 0)
+                                                .attr("cy", 0)
+                                                .attr("r", 60)
+                                                .style({"fill":"white","cursor":"pointer"});
+                                                //spin text
+                                                container.append("text")
+                                                .attr("x", 0)
+                                                .attr("y", 15)
+                                                .attr("text-anchor", "middle")
+                                                .text("SPIN")
+                                                .style({"font-weight":"bold", "font-size":"30px"});
+                                                function rotTween(to) {
+                                                $.post("/spinRes",
+                                                {
+                                                    resultAng: {{ang}},
+                                                    res: data[picked].value, 
+                                                    Cookie: document.cookie,
+                                                    csrfmiddlewaretoken: '{{csrf_token}}'
+                                                },
+                                                function(data, status){
+                                                    // Update balance
+                                                    return;
+                                                });
+
+                                                var i = d3.interpolate(0, {{ang}});
+                                                return function(t) {
+                                                return "rotate(" + i(t) + ")";
+                                                };
+                                                }
+                                                function getRandomNumbers(){
+                                                var array = new Uint16Array(1000);
+                                                var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
+                                                if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+                                                window.crypto.getRandomValues(array);
+                                                console.log("works");
+                                                } else {
+                                                    //no support for crypto, get crappy random numbers
+                                                    for(var i=0; i < 1000; i++){
+                                                    array[i] = Math.floor(Math.random() * 100000) + 1;
+                                                    }
+                                                }
+                                                return array;
+                                                }
+            </script>
+
+  <p style="margin-left: 220px;"><a class="btn btn-primary btn-lg" href="http://sh.st/nlwAq" role="button">Click here to load your Next Spin</a></p>
+                </div>
+                    <div style="text-align:center;background-color: white;">
+        <ul class="nav nav-pills" style="display:inline-block;margin-bottom: -8px;margin-top: -8px;">
+          <li classrole="presentation"><a id="inactive_ul" href="/">Home</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/faqs">FAQs</a></li>
+          <li role="presentation"><a id="active_ul" href="/login">Spin the Wheel</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/advertiser">Advertiser</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+    <div style="
+    text-align: center;
+">
+        © 2015 by MoneyMakingWheel.com | All Rights Reserved 
+    </div>
+            </body>
+        </html>

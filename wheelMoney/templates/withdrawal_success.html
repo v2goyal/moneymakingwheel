@@ -1,0 +1,108 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% get_static_prefix %}css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="images/favicon.ico" rel="shortcut icon">
+        <title>Money Making Wheel</title>
+                {% autoescape off %}
+    {{ads}}
+ {% endautoescape %}
+    </head>
+    <body>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/login">Spin the Wheel</a></li>
+                        <li class="active"><a href="#">Withdraw <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav" style="margin-left: 330px;">
+                        <li><a href="#" style="color: black;">Winnings : {{ Balance }}</a></li>
+                        <li><a href="#" style="color: black;">Spins Left : {{ spinsLeft }}</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+                <div style="position: absolute;top: 80px; left:20px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740157" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code -->
+        </div>
+        <div style="position: absolute;top: 730px; left:20px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740161" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 80px; left:1260px;">
+            <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740165" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+        <div style="position: absolute;top: 730px; left:1260px;">
+               <!-- Begin BidVertiser code -->
+            <SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=699350&bid=1740166" TYPE="text/javascript"></SCRIPT>
+            <!-- End BidVertiser code --> 
+        </div>
+               <div class="jumbotron" style="BACKGROUND-COLOR: BLACK; text-align: center;margin-top: -40px;">
+            {% load static %}
+            <img src="{% get_static_prefix %}images/LogoFinal.png" style="max-height: 380px;">
+        </div>
+        <div style="text-align: center;margin-top: -95px;">
+            <span class="label label-primary" style="font-size: 25px; background-color: rgba(0, 46, 93, 1); margin-top: -100px;font-family:times new roman,times,serif;font-weight: normal;">Genuine Portal to Make Money Online!</span>
+        </div>
+<br><br>
+<div class="container">
+<div class="alert alert-success" role="alert">Your withdrawal request has been received. You will receive your payment within 24 hours.</div>
+</div>
+        <div class="container" style="background-color:white; color:black;width: 1037.47px;margin-bottom: 20px;">
+        <h1>Withdraw:</h1>
+        <div style="margin-left:40px">
+                <form class="form-horizontal" action='' method="POST">
+                        {% csrf_token %}
+                        <label>Winnings : {{ Balance}}</label><br>
+                               <label>Method</label>
+                                               <select type="text" id="method" name="method" value="" class="form-control" required>
+                    <option value="Paypal">Paypal (Min : $2.00)</option>
+                    <option value="Payza">Skrill (Min : $2.00)</option>
+                </select>
+                <br>
+  <button id="submit" class="btn btn-primary" type="submit" class="btn btn-default" {{ disabled }}>Submit</button>
+</form>
+    <br>
+    <p><b>*</b>Your payment will be sent to : <b>{{email}}</b></p>
+    </div>
+        </div>
+            <div style="text-align:center;background-color: white;">
+        <ul class="nav nav-pills" style="display:inline-block;margin-bottom: -8px;margin-top: -8px;">
+          <li classrole="presentation"><a id="inactive_ul" href="/">Home</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/faqs">FAQs</a></li>
+          <li role="presentation"><a id="active_ul" href="/login">Spin the Wheel</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/advertiser">Advertiser</a></li>
+          <li role="presentation"><a id="inactive_ul" href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+    <div style="
+    text-align: center;
+">
+        © 2015 by MoneyMakingWheel.com | All Rights Reserved 
+    </div>
+    </body>
+</html>

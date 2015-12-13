@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build-jar" name="MarkupCalculator">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="MarkupCalculator.classpath">
+        <pathelement location="bin"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+            	<target name="clean">
+            		<delete dir="bin" />
+            		<mkdir dir="bin" />
+            	</target>
+
+            	<target name="copy-non-java-files">
+            		<copy todir="bin" includeemptydirs="false">
+            			<fileset dir="src" excludes="**/*.java" />
+            		</copy>
+            	</target>
+
+            	<target name="compile-jar-classes" depends="clean,copy-non-java-files">
+            		<javac srcdir="src" destdir="bin" classpathref="MarkupCalculator.classpath" />
+            	</target>
+            	<target name="clean-jar">
+            		<delete dir="build" />
+            		<mkdir dir="build" />
+            	</target>
+
+            	<target name="jar">
+            		<jar basedir="bin" destfile="build/${project-name}.jar">
+            			<manifest>
+            				<attribute name="Built-By" value="${builder}" />
+            				<attribute name="Built-On" value="${build-info.current-date}" />
+            				<attribute name="Built-At" value="${build-info.current-time}" />
+            			</manifest>
+            		</jar>
+            	</target>
+            					<target name="build-jar">
+            						<antcall target="compile-jar-classes" />
+            						<antcall target="clean-jar" />
+            						<antcall target="jar" />
+            					</target>
+</project>

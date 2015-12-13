@@ -1,0 +1,17 @@
+Searching 50 files for "your payment will"
+
+/Users/varungoyal/Projects/firstWebsite/wheelMoney/templates/withdraw.html:
+   75  </form>
+   76      <br>
+   77:     <p><b>*</b>Your payment will be sent to : <b>{{email}}</b></p>
+   78      </div>
+   79          </div>
+
+/Users/varungoyal/Projects/firstWebsite/wheelMoney/templates/withdrawal_success.html:
+   88  </form>
+   89      <br>
+   90:     <p><b>*</b>Your payment will be sent to : <b>{{email}}</b></p>
+   91      </div>
+   92          </div>
+
+2 matches across 2 files
