@@ -2,7 +2,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-wheel_engine = create_engine('mysql://root:foobar@localhost/WheelMoney', echo=True)
+wheel_engine = create_engine('mysql://sql599812:6QnsTHpBIr@sql5.freemysqlhosting.net/sql599812', echo=True)
 Session = sessionmaker(bind=wheel_engine)
 # Django settings for firstWebsite project.
 PROJECT_DIR = os.path.dirname(__file__)
@@ -16,13 +16,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# import dj_database_url
+# DATABASES['default'] =  dj_database_url.config()
+
 DATABASES = {
     'default': {
         'ENGINE': 'mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'WheelMoney',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'foobar',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'NAME': 'sql599812',                      # Or path to database file if using sqlite3.
+        'USER': 'sql599812',                      # Not used with sqlite3.
+        'PASSWORD': '6QnsTHpBIr',                  # Not used with sqlite3.
+        'HOST': 'sql5.freemysqlhosting.net',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -70,7 +73,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-        '/Users/varungoyal/Projects/firstWebsite/wheelMoney/static',
+        '/wheelMoney/static',
 
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
