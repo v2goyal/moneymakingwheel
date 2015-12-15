@@ -7,7 +7,7 @@ Session = sessionmaker(bind=wheel_engine)
 # Django settings for firstWebsite project.
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
